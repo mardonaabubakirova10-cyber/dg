@@ -1295,3 +1295,17 @@ body::after {
   .marquee-group + .marquee-group, .marquee-group i { display: none; }
   .marquee-group span + span { display: none; }
 }
+
+/* Мигающие индикаторы: «Набор открыт» и «ИИ-консультант» */
+.sync-blink,
+.rag-online {
+  animation: dotPulse 1.6s ease-in-out infinite;
+}
+
+.sync-blink { --dot-glow: #4ade80; }
+.rag-online { --dot-glow: #ffffff; }
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--dot-glow); }
+  50% { opacity: 0.3; box-shadow: 0 0 0 transparent; }
+}
