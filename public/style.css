@@ -447,7 +447,8 @@ body::after {
 .catalog-header-flex {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+  gap: 24px;
   margin-bottom: 32px;
 }
 
@@ -476,7 +477,8 @@ body::after {
 
 .catalog-search-wrap {
   position: relative;
-  width: 340px;
+  width: 400px;
+  flex-shrink: 0;
 }
 
 .catalog-search-wrap svg {
@@ -484,15 +486,16 @@ body::after {
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-subtle);
+  color: var(--text-muted);
+  pointer-events: none;
 }
 
 .catalog-search-wrap input {
   width: 100%;
-  padding: 12px 14px 12px 42px;
-  background: rgba(24, 25, 30, 0.62);
+  padding: 14px 18px 14px 46px;
+  background: rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(8px);
-  border: 1px solid var(--border-dark);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 999px;
   color: #fff;
   font-size: 14px;
