@@ -257,6 +257,12 @@ body {
   border-radius: 50%;
   margin-left: 6px;
   vertical-align: baseline;
+  animation: heroDotBlink 1.4s ease-in-out infinite;
+}
+
+@keyframes heroDotBlink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 18px rgba(232, 96, 126, 0.7); }
+  50% { opacity: 0.15; box-shadow: none; }
 }
 
 /* ИНТЕРАКТИВНЫЙ КУБИК КУРСОВ (В ЦЕНТРЕ МЕЖДУ TECH И MEETS) */
