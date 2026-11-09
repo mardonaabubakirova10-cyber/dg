@@ -47,6 +47,43 @@ body {
   overflow-x: hidden;
 }
 
+/* Космический фон всей страницы: звёздное поле и бордовая туманность */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  inset: 0;
+  background:
+    radial-gradient(1px 1px at 23px 41px, #fff 50%, transparent 100%),
+    radial-gradient(1px 1px at 97px 130px, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 160px 60px, #fff 50%, transparent 100%),
+    radial-gradient(1px 1px at 210px 200px, rgba(255, 200, 200, 0.9) 50%, transparent 100%),
+    radial-gradient(1px 1px at 60px 220px, rgba(200, 210, 255, 0.9) 50%, transparent 100%),
+    radial-gradient(1px 1px at 40px 90px, rgba(255, 255, 255, 0.7) 50%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 250px 150px, rgba(255, 225, 225, 0.95) 50%, transparent 100%),
+    radial-gradient(1px 1px at 300px 300px, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+    radial-gradient(ellipse 50% 50% at 12% 88%, rgba(139, 26, 58, 0.32), transparent 70%),
+    radial-gradient(ellipse 45% 45% at 92% 12%, rgba(30, 58, 138, 0.30), transparent 70%);
+  background-size:
+    230px 230px, 230px 230px, 230px 230px, 230px 230px, 230px 230px,
+    370px 370px, 370px 370px, 370px 370px,
+    100% 100%, 100% 100%;
+}
+
+/* Светящаяся полоса, как Млечный Путь на красной туманности */
+body::after {
+  inset: -25%;
+  transform: rotate(-18deg);
+  background:
+    radial-gradient(ellipse 55% 7% at 50% 50%, rgba(255, 190, 170, 0.22), transparent 100%),
+    radial-gradient(ellipse 85% 20% at 50% 50%, rgba(176, 38, 76, 0.38), transparent 100%);
+}
+
 .container {
   max-width: var(--max-w);
   margin: 0 auto;
@@ -165,36 +202,6 @@ body {
   justify-content: center;
   padding: 64px 24px;
   text-align: center;
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  /* Атмосфера тёмного класса: холодные сине-бирюзовые стены по краям, свет от окна в центре */
-  background:
-    radial-gradient(ellipse 36% 42% at 50% 28%, rgba(180, 215, 205, 0.14) 0%, transparent 70%),
-    radial-gradient(circle at 50% 35%, rgba(176, 38, 76, 0.10) 0%, transparent 60%),
-    linear-gradient(90deg, #0c2229 0%, #121a20 30%, #111215 50%, #121a20 70%, #0c2229 100%);
-}
-
-/* Мраморная фактура стен */
-.hero-bitwip::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.5;
-  mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.022' numOctaves='4' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.25 0 0 0 0 0.5 0 0 0 0 0.55 0 0 0 1.6 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* Виньетка: затемнение к краям, чтобы текст оставался читаемым */
-.hero-bitwip::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 .hero-center-box {
@@ -701,7 +708,7 @@ body {
    ========================================== */
 .instructors-section {
   padding: 80px 0;
-  background: #14151a;
+  background: rgba(20, 21, 26, 0.7);
   border-top: 1px solid var(--border-light);
 }
 
@@ -805,7 +812,7 @@ body {
    6. ФУТЕР
    ========================================== */
 .footer {
-  background: #0d0e11;
+  background: rgba(13, 14, 17, 0.88);
   border-top: 1px solid var(--border-light);
   padding: 60px 0 24px;
 }
