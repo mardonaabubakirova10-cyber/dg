@@ -71,7 +71,7 @@ body::before {
     radial-gradient(1px 1px at 70px 100px, rgba(255, 210, 210, 0.9) 50%, transparent 100%),
     radial-gradient(1px 1px at 110px 45px, rgba(255, 255, 255, 0.7) 50%, transparent 100%),
     radial-gradient(ellipse 50% 50% at 12% 88%, rgba(139, 26, 58, 0.32), transparent 70%),
-    radial-gradient(ellipse 45% 45% at 92% 12%, rgba(30, 58, 138, 0.30), transparent 70%);
+    radial-gradient(ellipse 50% 50% at 92% 12%, rgba(40, 75, 200, 0.42), transparent 70%);
   background-size:
     230px 230px, 230px 230px, 230px 230px, 230px 230px, 230px 230px,
     370px 370px, 370px 370px, 370px 370px,
@@ -86,7 +86,9 @@ body::after {
   background:
     radial-gradient(ellipse 55% 7% at 50% 50%, rgba(255, 190, 170, 0.3), transparent 100%),
     radial-gradient(ellipse 85% 20% at 50% 50%, rgba(176, 38, 76, 0.5), transparent 100%),
-    radial-gradient(ellipse 70% 14% at 50% 12%, rgba(139, 26, 58, 0.3), transparent 100%),
+    radial-gradient(ellipse 60% 18% at 84% 40%, rgba(45, 85, 220, 0.55), transparent 100%),
+    radial-gradient(ellipse 60% 18% at 16% 60%, rgba(45, 85, 220, 0.5), transparent 100%),
+    radial-gradient(ellipse 70% 14% at 50% 12%, rgba(40, 70, 190, 0.3), transparent 100%),
     radial-gradient(ellipse 70% 14% at 50% 88%, rgba(139, 26, 58, 0.3), transparent 100%);
 }
 
@@ -1237,7 +1239,7 @@ body::after {
   margin: 8px 0 14px calc(50% - 50vw);
   overflow: hidden;
   font-family: var(--font-hero);
-  font-size: clamp(36px, 6vw, 80px);
+  font-size: clamp(24px, 3.5vw, 44px);
   font-weight: 800;
   letter-spacing: -1px;
   line-height: 1.2;
