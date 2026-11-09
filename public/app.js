@@ -378,14 +378,14 @@ function initModals() {
         <div style="font-size: 12px; color: #9aa1b0; margin-top: 4px;">Первые 3 месяца каникул. Гарантия трудоустройства по договору.</div>
       </div>
 
-      <form onsubmit="handleFormSubmit(event)">
+      <form onsubmit="handleFormSubmit(event, '${c.id}')">
         <div style="margin-bottom: 14px;">
           <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Ваше имя</label>
           <input type="text" required placeholder="Константин" style="width: 100%; padding: 12px 14px; background: #242730; border: 1px solid #272a33; border-radius: 8px; color: #fff; font-size: 14px;" />
         </div>
         <div style="margin-bottom: 20px;">
           <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Номер телефона</label>
-          <input type="tel" required placeholder="+7 (999) 000-00-00" style="width: 100%; padding: 12px 14px; background: #242730; border: 1px solid #272a33; border-radius: 8px; color: #fff; font-size: 14px;" />
+          <input type="tel" required placeholder="+998 90 123 45 67" style="width: 100%; padding: 12px 14px; background: #242730; border: 1px solid #272a33; border-radius: 8px; color: #fff; font-size: 14px;" />
         </div>
         <button type="submit" class="btn-hero-white" style="width: 100%; border: none; cursor: pointer;">Зафиксировать скидку -${c.discount_percent}%</button>
       </form>
@@ -405,7 +405,7 @@ function initModals() {
         </div>
         <div style="margin-bottom: 20px;">
           <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Телефон</label>
-          <input type="tel" required placeholder="+7 (999) 000-00-00" style="width: 100%; padding: 12px 14px; background: #242730; border: 1px solid #272a33; border-radius: 8px; color: #fff; font-size: 14px;" />
+          <input type="tel" required placeholder="+998 90 123 45 67" style="width: 100%; padding: 12px 14px; background: #242730; border: 1px solid #272a33; border-radius: 8px; color: #fff; font-size: 14px;" />
         </div>
         <button type="submit" class="btn-hero-white" style="width: 100%; border: none; cursor: pointer;">Получить консультацию</button>
       </form>
@@ -413,8 +413,39 @@ function initModals() {
     modal.classList.add('open');
   }
 
-  window.handleFormSubmit = function(e) {
+  window.handleFormSubmit = async function(e, courseId) {
     e.preventDefault();
+    const form = e.target;
+    const [nameInput, phoneInput] = form.querySelectorAll('input');
+    const button = form.querySelector('button[type="submit"]');
+    const label = button.textContent;
+    button.disabled = true;
+    button.textContent = 'Отправляем…';
+    let error = '';
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: nameInput.value, phone: phoneInput.value, course_id: courseId })
+      });
+      const data = await res.json();
+      if (!data.success) error = data.error || 'Не удалось отправить заявку.';
+    } catch (err) {
+      error = 'Нет связи с сервером. Попробуйте позже.';
+    }
+    if (error) {
+      button.disabled = false;
+      button.textContent = label;
+      let box = form.querySelector('.form-error');
+      if (!box) {
+        box = document.createElement('div');
+        box.className = 'form-error';
+        box.style.cssText = 'color: #e8607e; font-size: 13px; margin-top: 12px;';
+        form.appendChild(box);
+      }
+      box.textContent = error;
+      return;
+    }
     body.innerHTML = `
       <div style="text-align: center; padding: 24px 0;">
         <div style="font-size: 44px; margin-bottom: 12px;">🎉</div>

@@ -48,7 +48,7 @@ npm start                # http://localhost:3000
 2. Впишите его в `.env`:
    ```
    GEMINI_API_KEY=ваш_ключ
-   GEMINI_MODEL=gemini-3.5-flash
+   GEMINI_MODEL=gemini-3.5-flash-lite
    ```
 3. Перезапустите сервер.
 

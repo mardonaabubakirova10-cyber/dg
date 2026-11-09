@@ -4,3 +4,5 @@ node_modules/
 .taste-skill/
 backup_before_tashkent/
 .agents/
+secrets/
+leads.jsonl

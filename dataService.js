@@ -5,7 +5,10 @@ const mammoth = require('mammoth');
 
 // DRIVE_FOLDER — путь к папке, синхронизируемой Google Drive для компьютера
 // (внутри: courses_data.xlsx и папка knowledge_base_word/). По умолчанию — локальная storage_drive.
-const STORAGE_DIR = process.env.DRIVE_FOLDER
+const driveSync = require('./driveSync');
+const STORAGE_DIR = driveSync.enabled
+  ? driveSync.CACHE_DIR // файлы скачиваются из папки Drive через API (см. driveSync.js)
+  : process.env.DRIVE_FOLDER
   ? path.resolve(process.env.DRIVE_FOLDER)
   : path.join(__dirname, 'storage_drive');
 const EXCEL_PATH = path.join(STORAGE_DIR, 'courses_data.xlsx');

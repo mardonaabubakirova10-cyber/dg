@@ -2,7 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config({ quiet: true });
+const driveSync = require('./driveSync');
 const dataService = require('./dataService');
+const leads = require('./leads');
 const ragService = require('./ragService');
 
 const app = express();
@@ -11,6 +13,9 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Подтягиваем свежие файлы с Google Drive (не чаще раза в 30 с)
+app.use('/api', async (req, res, next) => { await driveSync.refresh(); next(); });
 
 // API: Получить курсы с опциональной фильтрацией
 app.get('/api/courses', (req, res) => {
@@ -94,6 +99,31 @@ app.get('/api/meta', (req, res) => {
     });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// API: заявка на курс или консультацию (из модалки на сайте)
+const leadHits = new Map();
+app.post('/api/leads', async (req, res) => {
+  const ip = (req.headers['x-forwarded-for'] || req.ip || '').split(',')[0].trim();
+  const now = Date.now();
+  const hits = (leadHits.get(ip) || []).filter(t => now - t < 60 * 1000);
+  if (hits.length >= 5) return res.status(429).json({ success: false, error: 'Слишком много заявок. Подождите минуту.' });
+  leadHits.set(ip, [...hits, now]);
+
+  const name = String(req.body.name || '').trim().slice(0, 100);
+  const phone = String(req.body.phone || '').trim().slice(0, 30);
+  const digits = phone.replace(/\D/g, '');
+  if (!name || digits.length < 9 || digits.length > 15) {
+    return res.status(400).json({ success: false, error: 'Укажите имя и корректный номер телефона.' });
+  }
+  const course = dataService.getExcelData().courses.find(c => String(c.id) === String(req.body.course_id));
+  try {
+    await leads.saveLead({ type: course ? 'Запись на курс' : 'Консультация', name, phone, course: course ? course.title : '' });
+    res.json({ success: true });
+  } catch (err) {
+    console.error('[Leads] Не удалось сохранить заявку:', err.message);
+    res.status(500).json({ success: false, error: 'Не удалось отправить заявку. Попробуйте позже.' });
   }
 });
 
