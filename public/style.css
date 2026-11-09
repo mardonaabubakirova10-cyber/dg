@@ -261,6 +261,7 @@ body::after {
   font-family: var(--font-creativity);
   font-weight: 400;
   letter-spacing: 0.01em;
+  font-size: clamp(84px, 13vw, 180px);
   position: relative;
   white-space: nowrap;
 }
