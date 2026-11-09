@@ -67,11 +67,15 @@ body::before {
     radial-gradient(1px 1px at 40px 90px, rgba(255, 255, 255, 0.7) 50%, transparent 100%),
     radial-gradient(1.5px 1.5px at 250px 150px, rgba(255, 225, 225, 0.95) 50%, transparent 100%),
     radial-gradient(1px 1px at 300px 300px, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+    radial-gradient(1px 1px at 15px 15px, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+    radial-gradient(1px 1px at 70px 100px, rgba(255, 210, 210, 0.9) 50%, transparent 100%),
+    radial-gradient(1px 1px at 110px 45px, rgba(255, 255, 255, 0.7) 50%, transparent 100%),
     radial-gradient(ellipse 50% 50% at 12% 88%, rgba(139, 26, 58, 0.32), transparent 70%),
     radial-gradient(ellipse 45% 45% at 92% 12%, rgba(30, 58, 138, 0.30), transparent 70%);
   background-size:
     230px 230px, 230px 230px, 230px 230px, 230px 230px, 230px 230px,
     370px 370px, 370px 370px, 370px 370px,
+    130px 130px, 130px 130px, 130px 130px,
     100% 100%, 100% 100%;
 }
 
@@ -80,8 +84,10 @@ body::after {
   inset: -25%;
   transform: rotate(-18deg);
   background:
-    radial-gradient(ellipse 55% 7% at 50% 50%, rgba(255, 190, 170, 0.22), transparent 100%),
-    radial-gradient(ellipse 85% 20% at 50% 50%, rgba(176, 38, 76, 0.38), transparent 100%);
+    radial-gradient(ellipse 55% 7% at 50% 50%, rgba(255, 190, 170, 0.3), transparent 100%),
+    radial-gradient(ellipse 85% 20% at 50% 50%, rgba(176, 38, 76, 0.5), transparent 100%),
+    radial-gradient(ellipse 70% 14% at 50% 12%, rgba(139, 26, 58, 0.3), transparent 100%),
+    radial-gradient(ellipse 70% 14% at 50% 88%, rgba(139, 26, 58, 0.3), transparent 100%);
 }
 
 .container {
@@ -472,7 +478,8 @@ body::after {
 .catalog-search-wrap input {
   width: 100%;
   padding: 12px 14px 12px 42px;
-  background: var(--bg-card);
+  background: rgba(24, 25, 30, 0.62);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--border-dark);
   border-radius: 999px;
   color: #fff;
@@ -493,7 +500,8 @@ body::after {
 }
 
 .cat-pill {
-  background: var(--bg-card);
+  background: rgba(24, 25, 30, 0.62);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--border-dark);
   color: var(--text-muted);
   border-radius: 999px;
@@ -524,7 +532,8 @@ body::after {
 }
 
 .course-card-bitwip {
-  background: var(--bg-card);
+  background: rgba(24, 25, 30, 0.62);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--border-dark);
   border-radius: 20px;
   padding: 28px;
@@ -708,7 +717,7 @@ body::after {
    ========================================== */
 .instructors-section {
   padding: 80px 0;
-  background: rgba(20, 21, 26, 0.7);
+  background: rgba(20, 21, 26, 0.3);
   border-top: 1px solid var(--border-light);
 }
 
@@ -731,7 +740,8 @@ body::after {
 }
 
 .inst-card-dark {
-  background: var(--bg-card);
+  background: rgba(24, 25, 30, 0.62);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--border-dark);
   border-radius: 18px;
   padding: 24px;
@@ -779,7 +789,8 @@ body::after {
 }
 
 .knowledge-banner {
-  background: var(--bg-card);
+  background: rgba(24, 25, 30, 0.62);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--border-dark);
   border-radius: 24px;
   padding: 48px;
@@ -812,7 +823,7 @@ body::after {
    6. ФУТЕР
    ========================================== */
 .footer {
-  background: rgba(13, 14, 17, 0.88);
+  background: rgba(13, 14, 17, 0.6);
   border-top: 1px solid var(--border-light);
   padding: 60px 0 24px;
 }
