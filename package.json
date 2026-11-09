@@ -7,6 +7,8 @@
     "start": "node server.js",
     "dev": "node server.js",
     "init-storage": "node init_storage.js",
+    "bundle-storage": "node bundle_storage.js",
+    "build": "node bundle_storage.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -11,6 +11,15 @@ const STORAGE_DIR = process.env.DRIVE_FOLDER
 const EXCEL_PATH = path.join(STORAGE_DIR, 'courses_data.xlsx');
 const WORD_DIR = path.join(STORAGE_DIR, 'knowledge_base_word');
 
+// Запасной источник для Vercel: данные, упакованные в JSON (см. bundle_storage.js).
+// Используется, только если на диске нет файлов (нет локальной папки или Drive).
+let bundle = null;
+try {
+  bundle = require('./storage_bundle.json');
+} catch (err) {
+  // файла нет — работаем только с диска
+}
+
 // Кеш для данных и документов
 let dataCache = {
   courses: [],
@@ -26,13 +35,15 @@ let knowledgeDocs = [];
  */
 function loadExcelData() {
   try {
-    if (!fs.existsSync(EXCEL_PATH)) {
+    let workbook;
+    if (fs.existsSync(EXCEL_PATH)) {
+      workbook = xlsx.readFile(EXCEL_PATH);
+    } else if (bundle) {
+      workbook = xlsx.read(Buffer.from(bundle.excel, 'base64'), { type: 'buffer' });
+    } else {
       console.warn(`[DataService] Excel файл не найден по пути: ${EXCEL_PATH}`);
       return dataCache;
     }
-
-    // Читаем файл с диска
-    const workbook = xlsx.readFile(EXCEL_PATH);
 
     // Лист Courses
     if (workbook.SheetNames.includes('Courses')) {
@@ -60,13 +71,16 @@ function loadExcelData() {
  */
 async function loadWordDocs() {
   try {
-    if (!fs.existsSync(WORD_DIR)) return [];
-    const files = fs.readdirSync(WORD_DIR).filter(f => f.endsWith('.docx') && !f.startsWith('~$'));
+    const onDisk = fs.existsSync(WORD_DIR);
+    if (!onDisk && !bundle) return [];
+    const files = onDisk
+      ? fs.readdirSync(WORD_DIR).filter(f => f.endsWith('.docx') && !f.startsWith('~$'))
+      : Object.keys(bundle.docs);
     const parsed = [];
 
     for (const file of files) {
       const filePath = path.join(WORD_DIR, file);
-      const buffer = fs.readFileSync(filePath);
+      const buffer = onDisk ? fs.readFileSync(filePath) : Buffer.from(bundle.docs[file], 'base64');
       const result = await mammoth.extractRawText({ buffer });
       const text = result.value || "";
 
