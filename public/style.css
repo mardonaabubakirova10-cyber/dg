@@ -257,11 +257,18 @@ body::after {
   color: #ffffff;
 }
 
+/* Жирнее: у шрифта максимум 800, добавляем обводку того же цвета */
+.tech-word,
+.meets-word {
+  -webkit-text-stroke: 0.035em #ffffff;
+  paint-order: stroke fill;
+}
+
 .creativity-word {
   font-family: var(--font-creativity);
   font-weight: 400;
   letter-spacing: 0.01em;
-  font-size: clamp(84px, 13vw, 180px);
+  font-size: clamp(68px, 10.5vw, 145px);
   position: relative;
   white-space: nowrap;
 }
