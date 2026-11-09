@@ -1227,3 +1227,59 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
+
+/* ==========================================
+   БЕГУЩАЯ СТРОКА В ЗАГОЛОВКЕ ПРЕПОДАВАТЕЛЕЙ
+   ========================================== */
+.marquee {
+  /* на всю ширину экрана, даже внутри узкого блока */
+  width: 100vw;
+  margin: 8px 0 14px calc(50% - 50vw);
+  overflow: hidden;
+  font-family: var(--font-hero);
+  font-size: clamp(36px, 6vw, 80px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  white-space: nowrap;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 32s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.marquee-group i {
+  display: inline-block;
+  width: 0.28em;
+  height: 0.28em;
+  margin: 0 0.6em;
+  border-radius: 50%;
+  background: var(--color-accent-orange);
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee { white-space: normal; text-align: center; }
+  .marquee-track { width: auto; justify-content: center; }
+  .marquee-group { flex-wrap: wrap; justify-content: center; }
+  .marquee-group + .marquee-group, .marquee-group i { display: none; }
+  .marquee-group span + span { display: none; }
+}
