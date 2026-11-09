@@ -1,0 +1,6 @@
+node_modules/
+.env
+.vercel/
+.taste-skill/
+backup_before_tashkent/
+.agents/
