@@ -164,8 +164,37 @@ body {
   align-items: center;
   justify-content: center;
   padding: 64px 24px;
-  background: radial-gradient(circle at 50% 35%, rgba(176, 38, 76, 0.08) 0%, transparent 60%);
   text-align: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  /* Атмосфера тёмного класса: холодные сине-бирюзовые стены по краям, свет от окна в центре */
+  background:
+    radial-gradient(ellipse 36% 42% at 50% 28%, rgba(180, 215, 205, 0.14) 0%, transparent 70%),
+    radial-gradient(circle at 50% 35%, rgba(176, 38, 76, 0.10) 0%, transparent 60%),
+    linear-gradient(90deg, #0c2229 0%, #121a20 30%, #111215 50%, #121a20 70%, #0c2229 100%);
+}
+
+/* Мраморная фактура стен */
+.hero-bitwip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.022' numOctaves='4' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.25 0 0 0 0 0.5 0 0 0 0 0.55 0 0 0 1.6 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Виньетка: затемнение к краям, чтобы текст оставался читаемым */
+.hero-bitwip::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 .hero-center-box {
