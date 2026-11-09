@@ -22,7 +22,7 @@
   --border-light: rgba(255, 255, 255, 0.08);
 
   --font-hero: 'Plus Jakarta Sans', -apple-system, sans-serif;
-  --font-creativity: 'Syne', sans-serif;
+  --font-creativity: 'Caprasimo', 'Syne', serif;
   --font-body: 'Inter', -apple-system, sans-serif;
 
   --max-w: 1240px;
@@ -259,9 +259,10 @@ body::after {
 
 .creativity-word {
   font-family: var(--font-creativity);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  letter-spacing: 0.01em;
   position: relative;
+  white-space: nowrap;
 }
 
 .hero-dot {
@@ -293,29 +294,30 @@ body::after {
 .rubiks-cube {
   width: clamp(100px, 14vw, 160px);
   height: clamp(100px, 14vw, 160px);
-  background: #2a2520;
-  border-radius: 18px;
-  padding: 8px;
-  box-shadow: 
-    0 12px 36px rgba(0, 0, 0, 0.7),
-    0 0 0 2px rgba(255, 255, 255, 0.12),
-    0 10px 0 #181512;
+  background: #f3ecdc;
+  border-radius: 20px;
+  padding: 7px;
+  transform: rotate(-9deg);
+  box-shadow:
+    5px 5px 0 #d6cdb8,
+    10px 10px 0 #bdb39c,
+    0 28px 44px rgba(0, 0, 0, 0.65);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
 }
 
 .rubiks-cube:hover {
-  transform: translateY(-6px) rotate(-2deg) scale(1.04);
-  box-shadow: 
-    0 20px 48px rgba(176, 38, 76, 0.25),
-    0 0 0 2px rgba(176, 38, 76, 0.5),
-    0 14px 0 #181512;
+  transform: translateY(-6px) rotate(-3deg) scale(1.05);
+  box-shadow:
+    5px 5px 0 #d6cdb8,
+    10px 10px 0 #bdb39c,
+    0 34px 54px rgba(176, 38, 76, 0.35);
 }
 
 .cube-grid-3x3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 5px;
+  gap: 4px;
   width: 100%;
   height: 100%;
 }
