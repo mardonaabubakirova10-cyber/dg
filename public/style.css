@@ -1,7 +1,7 @@
 /* ==========================================================================
    DIGITAL COURSES — СТИЛЬ BITWIP ("TECH MEETS CREATIVITY")
    Темная премиальная эстетика, гигантская акцидентная типографика,
-   интерактивный кубик курсов и оранжевый акцент #FF5C28
+   интерактивный кубик курсов и бордовый акцент #8B1A3A
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap');
@@ -11,9 +11,9 @@
   --bg-card: #18191e;
   --bg-card-hover: #1f2127;
   --bg-light-surface: #242730;
-  --color-accent-orange: #ff5c28;
-  --color-accent-orange-hover: #b8370e;
-  --accent-solid: #d03f12; /* оранжевая заливка под белым текстом, контраст 4.8:1 */
+  --color-accent-orange: #e8607e; /* бордовый акцент, светлый тон для текста и линий на тёмном фоне */
+  --color-accent-orange-hover: #6a1230;
+  --accent-solid: #8b1a3a; /* бордовая заливка под белым текстом, контраст около 9:1 */
   
   --text-white: #ffffff;
   --text-muted: #9aa1b0;
@@ -164,7 +164,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 64px 24px;
-  background: radial-gradient(circle at 50% 35%, rgba(255, 92, 40, 0.08) 0%, transparent 60%);
+  background: radial-gradient(circle at 50% 35%, rgba(176, 38, 76, 0.08) 0%, transparent 60%);
   text-align: center;
 }
 
@@ -256,8 +256,8 @@ body {
 .rubiks-cube:hover {
   transform: translateY(-6px) rotate(-2deg) scale(1.04);
   box-shadow: 
-    0 20px 48px rgba(255, 92, 40, 0.25),
-    0 0 0 2px rgba(255, 92, 40, 0.5),
+    0 20px 48px rgba(176, 38, 76, 0.25),
+    0 0 0 2px rgba(176, 38, 76, 0.5),
     0 14px 0 #181512;
 }
 
@@ -493,7 +493,7 @@ body {
 
 .course-card-bitwip:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 92, 40, 0.4);
+  border-color: rgba(176, 38, 76, 0.4);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
 }
 
@@ -505,7 +505,7 @@ body {
 }
 
 .c-badge {
-  background: rgba(255, 92, 40, 0.15);
+  background: rgba(176, 38, 76, 0.15);
   color: var(--color-accent-orange);
   font-size: 13px;
   font-weight: 800;
@@ -851,7 +851,7 @@ body {
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(255, 92, 40, 0.4);
+  box-shadow: 0 8px 24px rgba(176, 38, 76, 0.4);
   transition: transform 0.2s, background 0.2s;
 }
 

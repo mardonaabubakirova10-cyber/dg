@@ -304,7 +304,7 @@ function initRagAssistant() {
       if (extra.courses && extra.courses.length > 0) {
         html += '<div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px;">';
         extra.courses.forEach(c => {
-          html += `<button type="button" class="rag-course-link" data-title="${esc(c.title)}" style="font-size: 11px; padding: 4px 8px; border-radius: 999px; border: 1px solid #ff5c28; background: transparent; color: #ff5c28; cursor: pointer;">→ ${esc(c.title)}</button>`;
+          html += `<button type="button" class="rag-course-link" data-title="${esc(c.title)}" style="font-size: 11px; padding: 4px 8px; border-radius: 999px; border: 1px solid #e8607e; background: transparent; color: #e8607e; cursor: pointer;">→ ${esc(c.title)}</button>`;
         });
         html += '</div>';
       }
@@ -316,7 +316,7 @@ function initRagAssistant() {
         html += '</div>';
       }
       if (sources && sources.length > 0) {
-        html += `<div style="font-size: 11px; color: #ff5c28; margin-top: 6px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 4px;">
+        html += `<div style="font-size: 11px; color: #e8607e; margin-top: 6px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 4px;">
           📄 Источники: ${sources.map(sourceName).map(esc).join(', ')}
         </div>`;
       }
@@ -372,8 +372,8 @@ function initModals() {
       <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 8px;">Запись на курс</h3>
       <p style="color: #9aa1b0; font-size: 14px; margin-bottom: 20px;">${c.title}</p>
       
-      <div style="background: rgba(255, 92, 40, 0.1); border: 1px solid rgba(255, 92, 40, 0.2); padding: 14px; border-radius: 12px; margin-bottom: 20px;">
-        <div style="font-size: 12px; color: #ff5c28; font-weight: 700; text-transform: uppercase;">Рассрочка без %:</div>
+      <div style="background: rgba(176, 38, 76, 0.1); border: 1px solid rgba(176, 38, 76, 0.2); padding: 14px; border-radius: 12px; margin-bottom: 20px;">
+        <div style="font-size: 12px; color: #e8607e; font-weight: 700; text-transform: uppercase;">Рассрочка без %:</div>
         <div style="font-size: 20px; font-weight: 900; color: #fff;">от ${Number(c.price_monthly).toLocaleString('ru-RU')} сум/мес</div>
         <div style="font-size: 12px; color: #9aa1b0; margin-top: 4px;">Первые 3 месяца каникул. Гарантия трудоустройства по договору.</div>
       </div>
